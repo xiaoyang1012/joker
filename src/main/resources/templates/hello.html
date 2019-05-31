@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>欢迎来到yxl智能聊天室</title>
+    <title>小仰的个人网站</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-xs-4">
             <div class="fakeimg">
-                <img src="/imgs/1.JPG" class="img-circle" th:width="150px" th:height="150px">
+                <img src="/imgs/1.JPG" class="img-circle" th:width="200px" th:height="200px">
             </div>
             <p>关于我的介绍..</p>
             <h3>链接</h3>
@@ -74,7 +74,7 @@
                 </a>
             </div>
 
-            <!--huobo-->
+            <!--机器人的回复开始-->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -85,8 +85,17 @@
                     <span id="response"  ></span>
                 </div>
             </div>
+            <!--机器人的回复结束-->
 
-            <ul class="list-group">
+            <ul class="list-group" th:each="user : ${users}">
+                <a class="list-group-item" href="#">
+                    <h4 class="list-group-item-heading">
+                        <span th:text="*{user}">...</span>
+                    </h4>
+                    <p class="list-group-item-text">
+                        您将通过网页进行免费域名注册。
+                    </p>
+                </a>
                 <a class="list-group-item" href="#">
                     <h4 class="list-group-item-heading">
                         免费域名注册
@@ -112,6 +121,9 @@
             </ul>
         </div>
 
+
+
+
         <script>
             $(function(){
                 $("#tijiao").click(function(){
@@ -132,8 +144,6 @@
                 });
             });
         </script>
-
-
     </div>
 </div>
 </body>
