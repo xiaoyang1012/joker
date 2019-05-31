@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<li th:each="user : ${users}">
+    <span th:text="*{users}">...</span>
+    <span th:text="*{user}">...</span>
+</li>
+<p  th:text="${student.name}">name</p>
+
+<a th:if="${student.age!=null}" th:href="@{/talk}"  > </i>111 </a>
+
+
+
+<select th:field="${student.sex}" class="form-control" th:switch="${student.sex.toString()}"
+        data-required="true">
+    <option value="男" th:case="'男'" th:selected="selected" >男</option>
+    <option value="女" th:case="'女'" th:selected="selected" >女</option>
+    <option value="">请选择</option>
+</select>
+
+<br>
+<input type="text" class="form-control" th:unless="${student.name} eq '' or ${student.name} eq null"
+       data-required="true" th:placeholder="${student.name}" />
+
+
+</body>
+</html>
