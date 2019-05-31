@@ -17,10 +17,13 @@ public class PageController {
         users.add("yang");
         users.add("yang1");
         users.add("yang2");
+
+        String aboutMe="111111111111111111111111111111111111";
         student student=new student("yang","25",45,"男");
 
         model.addAttribute("users",users);
         model.addAttribute("student",student);
+        model.addAttribute("aboutMe",aboutMe);
 
         return "hello";
     }
