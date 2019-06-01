@@ -16,7 +16,7 @@ public class JokerController {
     public String chat(@RequestParam(value = "content", defaultValue = "你好")String content,
                         HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
-        String APIKEY = "7d14fa4bc295404a9fced576c37453e5"; //图灵机器人的apikey
+        String APIKEY = "46d216d4ceeb491aac90e2ef550a12d9"; //图灵机器人的apikey
         String getURL = "http://www.tuling123.com/openapi/api?key=" + APIKEY + "&info=" + content;
         URL getUrl = new URL(getURL);
         HttpURLConnection connection = (HttpURLConnection) getUrl.openConnection();
