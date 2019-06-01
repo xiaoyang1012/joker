@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>小仰的个人网站</title>
+    <title>小仰的个人空间</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/portal.js"></script>
 </head>
 <body>
 <!--添加navbar-fixed-top 就能把导航栏固定到顶部   -->
@@ -15,7 +16,7 @@
             <a class="navbar-brand" href="http://www.yxlzone.top">小仰的个人网站</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><input type="text" class="form-control" placeholder="Search"></li>
+            <!--<li><input type="text" class="form-control" placeholder="Search"></li>-->
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
         </ul>
@@ -26,9 +27,11 @@
     <div class="row">
         <div class="col-xs-4">
             <div class="fakeimg">
-                <img src="/imgs/1.JPG" class="img-circle" th:width="200px" th:height="200px">
+
+
+                <img src="/imgs/me.JPG" class="img-circle" th:width="150px" th:height="150px">
             </div>
-            <p>关于我的介绍..</p>
+            <p th:text="${aboutMe}">关于我的介绍..关于我的介绍..关于我的介绍..关于我的介绍..关于我的介绍..关于我的介绍..关于我的介绍..关于我的介绍..</p>
             <h3>链接</h3>
             <p>描述文本。</p>
             <ul class="nav nav-pills nav-stacked">
@@ -82,23 +85,16 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <span id="response"  ></span>
+                    <span id="response"></span>
                 </div>
             </div>
             <!--机器人的回复结束-->
 
             <ul class="list-group" th:each="user : ${users}">
                 <a class="list-group-item" href="#">
+                    <span class="badge" style="background-color: deepskyblue">精</span>
                     <h4 class="list-group-item-heading">
                         <span th:text="*{user}">...</span>
-                    </h4>
-                    <p class="list-group-item-text">
-                        您将通过网页进行免费域名注册。
-                    </p>
-                </a>
-                <a class="list-group-item" href="#">
-                    <h4 class="list-group-item-heading">
-                        免费域名注册
                     </h4>
                     <p class="list-group-item-text">
                         您将通过网页进行免费域名注册。
@@ -120,28 +116,6 @@
                 </a>
             </ul>
         </div>
-
-
-        <script>
-            $(function(){
-                $("#tijiao").click(function(){
-                    var content=document.getElementById("content").value;
-                    var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-                    httpRequest.open('GET', '/talk?content='+content, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
-                    httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-                    /**
-                     * 获取数据后的处理程序
-                     */
-                    httpRequest.onreadystatechange = function () {
-                        //alert("httpRequest.readyState="+httpRequest.readyState+"-httpRequest.status == "+httpRequest.status);
-                        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                            var json = httpRequest.responseText;//获取到json字符串，还需解析
-                            $("#response").html(json);
-                        }
-                    };
-                });
-            });
-        </script>
     </div>
 </div>
 </body>
