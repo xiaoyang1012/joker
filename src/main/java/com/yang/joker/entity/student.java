@@ -12,7 +12,19 @@ public class student {
         this.name=name;
         this.sex=sex;
     }
+    public student(){
 
+    }
+    public student(String name,String level,int age){
+        this.age=age;
+        this.level=level;
+        this.name=name;
+    }
+
+    public student(String name,String level){
+        this.age=age;
+        this.level=level;
+    }
 
     public String getName() {
         return name;
@@ -44,5 +56,18 @@ public class student {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public void  printX(String args){
+        System.out.println(args);
+    }
+    @Override
+    public String toString() {
+        return "student{" +
+                "name='" + name + '\'' +
+                ", level='" + level + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                '}';
     }
 }
