@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,9 +15,17 @@ import java.net.URL;
 public class JokerController {
     @RequestMapping("/talk")
     public String chat(@RequestParam(value = "content", defaultValue = "你好")String content,
-                        HttpServletResponse response) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        String APIKEY = "46d216d4ceeb491aac90e2ef550a12d9"; //图灵机器人的apikey
+                        HttpServletRequest request) throws IOException {
+        //request.setCharacterEncoding("utf-8");
+        System.out.println("request.getRemoteAddr()---"+request.getRemoteAddr());
+        System.out.println("request.getSession().getId()---"+request.getSession().getId());
+        System.out.println("request.getHeader(\"X-Real-IP\")---"+request.getHeader("X-Real-IP"));
+        System.out.println("request.getHeader(\"X-Forwarded-For\")"+request.getHeader("X-Forwarded-For"));
+        System.out.println("request.getHeader(\"WL-Proxy-Client-IP\")"+request.getHeader("WL-Proxy-Client-IP"));
+        System.out.println("request.getHeader(\"HTTP_CLIENT_IP\")"+request.getHeader("HTTP_CLIENT_IP"));
+
+
+        String APIKEY = "7d14fa4bc295404a9fced576c37453e5"; //图灵机器人的apikey
         String getURL = "http://www.tuling123.com/openapi/api?key=" + APIKEY + "&info=" + content;
         URL getUrl = new URL(getURL);
         HttpURLConnection connection = (HttpURLConnection) getUrl.openConnection();
