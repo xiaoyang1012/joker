@@ -3,9 +3,11 @@ package com.yang.joker.utils;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
-import java.util.Random;
 
-public class IPUtils {
+/**
+ * 获取本机IP地址，自动识别windows还是linux
+ */
+public class LocalIPUtils {
     public static boolean isWindowsOS(){
         boolean isWindowsOS = false;
         String osName = System.getProperty("os.name");
@@ -61,6 +63,6 @@ public class IPUtils {
     }
 
     public static void main(String[] args){
-       System.out.println(IPUtils.getLocalIP());
+       System.out.println(LocalIPUtils.getLocalIP());
     }
 }

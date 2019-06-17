@@ -1,6 +1,7 @@
 package com.yang.joker.controller;
 
 import com.yang.joker.entity.student;
+import com.yang.joker.utils.ClientIpUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,8 @@ public class PageController {
     @RequestMapping("/")
     public String init(Model model,HttpServletRequest request){
 
-        System.out.println("request.getRemoteAddr()---"+request.getRemoteAddr());
-        System.out.println("request.getSession().getId()---"+request.getSession().getId());
+        String clientIP= ClientIpUtils.getIpAddr(request);
+        System.out.println("用户："+clientIP+"进来了！");
 
         List<String> users=new ArrayList();
         users.add("yang");
